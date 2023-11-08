@@ -1,0 +1,26 @@
+const moment = require('moment');
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+// Función para crear un recordatorio
+function crearRecordatorio(texto, fechaHora) {
+  const recordatorio = {
+    texto: texto,
+    fechaHora: moment(fechaHora)
+  };
+
+  // Puedes guardar el recordatorio en una base de datos o hacer cualquier otra operación necesaria
+  console.log('Se ha creado el siguiente recordatorio:', recordatorio);
+}
+
+// Pregunta al usuario el texto del recordatorio y la fecha y hora
+rl.question('Introduce el texto del recordatorio: ', (texto) => {
+  rl.question('Introduce la fecha y hora del recordatorio (YYYY-MM-DD HH:mm): ', (fechaHora) => {
+    crearRecordatorio(texto, fechaHora);
+    rl.close();
+  });
+});
